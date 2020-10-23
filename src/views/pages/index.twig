@@ -1,0 +1,76 @@
+{% set page_title = 'CitiGym' %}
+{% extends "../elements/_base.twig" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="ct-menu">
+        <a class="ct-menu__logo" href="#">
+            <img src="https://citigym.com.vn/themes/citigym/images/logo.png" alt="Citigym">
+        </a>
+        <ul class="ct-menu__nav">
+          
+            <li class="ct-menu__nav-item">
+                <a href="#">Về chúng tôi</a>
+            </li>
+            <li class="ct-menu__nav-item">
+                <a href="#">Chính sách giá</a>
+            </li>
+            <li class="ct-menu__nav-item">
+                <a href="#">Khuyến Mãi</a>
+            </li>
+            <li class="ct-menu__nav-item">
+                <a href="#">Câu lạc bộ</a>
+            </li>
+            <li class="ct-menu__nav-item">
+                <a href="#">Dịch vụ</a>
+            </li>
+            <li class="ct-menu__nav-item">
+                <a href="#">Lịch Học</a>
+            </li>
+            <li class="ct-menu__nav-item">
+                <a href="#">Tin tức</a>
+            </li>
+            <li class="ct-menu__nav-item mobile">
+                <a href="#" id="toggle-menu-mobile" class="close-menu-mobile">
+                    <span class="ri-menu-line"></span>
+                </a>
+                <a href="#" class="btn-register"> Đăng kí tập thử</a>
+            </li>
+        </ul>
+        <div class="ct-menu__action">
+            <a href="#" class="btn-register"> Đăng kí tập thử</a>
+            <div class="dropdown">
+                <button
+                    class="btn dropdown-toggle"
+                    type="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                >
+                    <img src="https://citigym.com.vn/vendor/core/images/flags/vn.png" title="Tiếng Việt" alt="Tiếng Việt">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu language_bar_chooser " style="display: none;">
+                    <li class="active">
+                        <a rel="alternate" hreflang="vi" href="https://citigym.com.vn/">
+                            <img src="https://citigym.com.vn/vendor/core/images/flags/vn.png" title="Tiếng Việt" alt="Tiếng Việt">
+                            <span>Tiếng Việt</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a rel="alternate" hreflang="en" href="https://citigym.com.vn/en">
+                            <img src="https://citigym.com.vn/vendor/core/images/flags/us.png" title="English" alt="English">
+                            <span>English</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="block1 home" id="home">
+    <img class="w-100" src="https://citigym.com.vn/storage/uploads/1905x800-12-1905x834.jpg" alt="">
+</section>
+{% endblock %}
