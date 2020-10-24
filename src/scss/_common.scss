@@ -1,7 +1,9 @@
 body {
     margin: 0;
     font-size: 14px;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
+
 .container {
     @media (min-width: 1200px) {
         max-width: 1170px;
@@ -22,8 +24,9 @@ body {
     line-height: 1.5;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
         box-shadow 0.15s ease-in-out;
+
     @media (max-width: 767px) {
-        padding: 12px 32px !important; 
+        padding: 12px 32px !important;
     }
 
     &:hover {
@@ -36,43 +39,89 @@ body {
 .ct-menu {
     @include flexbox;
     @include align-items(center);
-    // @include flex-wrap(wrap);
+
+    @media(max-width:767px) {
+        height: 80px;
+    }
+
     ul {
         list-style: none;
-        padding: 0;
         margin: 0;
-        @include flexbox;
     }
+
     &__logo {
         max-width: 140px;
         display: inline-block;
         margin-right: auto;
+
         img {
             width: 100%;
         }
     }
+
     &__nav {
-        // @include flexbox;
-        // @include align-items(center);
-        // @include flex-wrap(wrap);
+        list-style: none;
+        padding: 22px 0;
+        margin: 0;
+        @include flexbox;
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        @include align-items(center);
+
+        @media(max-width:767px) {
+            @include flex-direction(column);
+            @include justify-content(flex-start);
+            @include align-items(flex-start);
+            position: fixed;
+            background: #fff;
+            height: 100%;
+            overflow: auto;
+            z-index: 100;
+            top: 0;
+            right: 0;
+            transform: translateX(320px);
+            width: 320px;
+            padding: 40px;
+            transition: transform .4s ease-in-out, visibility .5s;
+        }
+
+        &.active {
+            visibility: visible;
+            transform: none;
+        }
     }
+
     &__nav-item {
         @media (max-width: 767px) {
-            display: none;
+            display: block;
         }
+
         &.mobile {
             font-size: 20px;
             display: none;
+
             @media (max-width: 767px) {
                 display: block;
+                margin-left: auto;
             }
         }
+
         .btn-register {
             color: #fff;
+
+            @media (max-width: 767px) {
+                display: none;
+            }
+
+            &:hover {
+                color: #fff
+            }
         }
+
         a {
             text-transform: uppercase;
-            padding: 24px 18px;
+            // padding: 24px 18px;
+            padding: 0 18px;
             display: inline-block;
             color: #454545;
             text-decoration: none;
@@ -82,27 +131,80 @@ body {
                 Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
             font-weight: 700;
             text-transform: uppercase;
+
             @media (max-width: 767px) {
-                padding: 23px 18px;
+                font-size: 16px;
+                display: block;
+                padding: 8px 0;
+                color: #454545;
+                text-decoration: none;
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
             }
+
             &:hover {
                 color: #a50000;
             }
-            
-            
+
+
         }
     }
+
     &__action {
         @include flexbox;
         @include align-items(center);
         position: relative;
+
         @media (max-width: 767px) {
-            display: none;
+            @include flex-direction(column);
+            @include align-items(flex-start);
+        }
+
+        .btn-register {
+            @media (max-width: 767px) {
+                order: 2;
+                margin-top: 18px;
+            }
         }
     }
+
+    &__toggle {
+        color: #454545;
+        font-size: 20px;
+        transition: color .3s ease, border .3s ease, background .3s ease;
+        text-transform: uppercase;
+        padding: 24px 18px;
+        display: none;
+        font-weight: 700;
+
+        &:hover {
+            text-decoration: none;
+            color: #a31e23;
+        }
+
+        @media(max-width: 767px) {
+            display: block;
+        }
+    }
+
+    &__toggle-mobile {
+        display: none;
+        font-size: 16px !important;
+        text-align: right;
+
+        @media(max-width: 767px) {
+            display: block;
+        }
+    }
+
     .dropdown {
         position: absolute;
         right: -40px;
+
+        @media(max-width: 767px) {
+            position: static;
+        }
+
         .btn {
             outline: none;
             padding: 0;
@@ -111,13 +213,143 @@ body {
             border-radius: 0;
             @include flexbox;
             @include align-items(center);
+
             &:focus {
                 outline: none;
                 box-shadow: none;
             }
         }
+
+        &-menu {
+            border-radius: 0;
+            min-width: 160px;
+            font-size: 14px;
+            text-align: left;
+            list-style: none;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: 0;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            width: 100%;
+            padding: 0;
+            left: -21px !important;
+
+            &.show {
+                top: 8px !important;
+                width: 100%;
+            }
+
+            li {
+                padding-left: 10px;
+
+                &.active {
+                    background-color: #f5f6f8 !important;
+                }
+            }
+
+            a {
+                color: #454545;
+                margin-left: 10px;
+                font-size: 14px;
+                line-height: 58px;
+                @include flexbox;
+                @include align-items(center);
+
+                span {
+                    padding-left: 10px;
+                }
+
+            }
+        }
     }
+
     .dropdown-toggle::after {
         display: none;
+    }
+}
+
+.sidebar-menu-open {
+    .site-backdrop {
+        opacity: .2;
+        visibility: visible;
+        z-index: 90;
+    }
+}
+
+.site-backdrop {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    content: '';
+    opacity: 0;
+    z-index: 0;
+    position: fixed;
+    -webkit-transition: opacity .35s, visibility .35s;
+    transition: opacity .35s, visibility .35s;
+    cursor: pointer;
+    visibility: hidden;
+
+
+}
+
+.our-services {
+    padding: 65px 0 90px 0;
+    background: url('../assets/images/service-banner.jpg');
+    background-size: cover;
+    margin-bottom: 0;
+    position: relative;
+
+    @media(max-width: 767px) {
+        padding: 32px 0;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(243, 243, 243, .95);
+    }
+
+    &__container {
+        z-index: 1;
+        position: relative;
+    }
+
+    .heading {
+        @include flexbox;
+        @include flex-direction(column);
+        @include align-items(center);
+        font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #454545;
+        margin: 0 15px;
+        margin-bottom: 32px;
+        text-align: center;
+
+        @media(max-width: 767px) {
+            font-size: 24px;
+        }
+
+
+    }
+
+    .sub-heading {
+        width: 100%;
+        max-width: 420px;
+        font-size: 14px;
+        font-weight: normal;
+        margin-top: 17px;
+        line-height: normal;
+        text-transform: none;
     }
 }
